@@ -23,14 +23,14 @@ class AuthController extends Controller
         $password = $_POST['password'];
         $user = new User();
         $user = $user->getByEmail($email);
-
         if ($user) {
-            $hashedPassword = $user['password'];
+            $hashedPassword = $user->password;
             if (password_verify($password, $hashedPassword)) {
                 $_SESSION['user'] = [
-                    'id' => $user['id'],
-                    'name' => $user['name'],
-                    'email' => $user['email'],
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'role' => $user->role,
                 ];
                 header('Location: /dashboard');
                 exit();
