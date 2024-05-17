@@ -49,6 +49,21 @@ class Model
         return true;
     }
 
+    public function insertGetId($data)
+    {
+        $columns = implode(", ", array_keys($data));
+        $placeholders = implode(", ", array_fill(0, count($data), "?"));
+        $sql = "INSERT INTO {$this->table} ({$columns}) VALUES ({$placeholders})";
+        $prepare = $this->pdo->prepare($sql);
+        $i = 1;
+        foreach ($data as $value) {
+            $prepare->bindValue($i, $value);
+            $i++;
+        }
+        $prepare->execute();
+        return $this->pdo->lastInsertId();
+    }
+
     public function update(array $data, int $id)
     {
         $updateSql = implode(", ", array_map(fn($key) => "$key = ?", array_keys($data)));
