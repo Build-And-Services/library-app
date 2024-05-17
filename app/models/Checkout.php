@@ -11,11 +11,6 @@ class Checkout extends Model
 {
     protected string $table = 'checkouts';
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function getCheckouts()
     {
         $sql = "

@@ -11,10 +11,6 @@ class User extends Model
 {
     protected string $table = 'users';
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
     public function getByEmail($email)
     {
         $result = $this->where(['email' => $email]);
