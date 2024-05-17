@@ -66,20 +66,26 @@ class AuthController extends Controller
             $password = $_POST['password'];
             $email = $_POST['email'];
             $telepon = $_POST['telepon'];
-        
-            if (empty($name) || empty($password) || empty($email) || empty($telepon)) {
+            $role = $_POST['role'];
+
+            $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+
+            if (empty($name) || empty($password) || empty($email) || empty($telepon) || empty($role)) {
                 $_SESSION['error'] = 'Attribute must be filled';
                 return $this->view('register', $_SESSION);
             }
         
             $user = new User();
-            if ($user->register($name, $password, $email, $telepon)) {
-                $_SESSION['success'] = 'Success register, Please login';
-                return $this->view('welcome', $_SESSION);
-            } else {
-                $_SESSION['error'] = 'Register failed, Please try again';
-                return $this->view('register', $_SESSION);
-            }
+            $user->create([
+                'name' => $name,
+                'password' => $hashed_password,
+                'email' => $email,
+                'telepon' => $telepon,
+                'role' => $role,
+            ]);
+            $_SESSION['success'] = 'Success register, Please login';
+            return $this->view('welcome', $_SESSION);
+
         } else {
             $_SESSION['error'] = 'Register failed, Please try again';
             return $this->view('register', $_SESSION);
