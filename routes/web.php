@@ -16,3 +16,7 @@ Router::get('/dashboard', 'DashboardController', 'index');
 Router::get('/pustakawans', 'PustakawanController', 'index');
 Router::get('/dashboard', 'DashboardController', 'index');
 Router::get('/checkouts', 'CheckoutController', 'index');
+Router::get('/pengunjung', 'PengunjungController', 'index');
+Router::get('/pengunjung/edit/{id}', 'PengunjungController', 'show');
+Router::post('/pengunjung/update/{id}', 'PengunjungController', 'update');
+Router::get('/pengunjung/delete/{id}', 'PengunjungController', 'delete');

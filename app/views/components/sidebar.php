@@ -15,17 +15,26 @@
             class="px-4 py-3 flex items-center space-x-4 rounded-lg hover:bg-gray-100">
             <span class="-mr-1 font-medium">Dashboard</span>
         </a>
+        <?php 
+        if ($_SESSION['user']['role'] === 'ADMIN') {
+        ?>
+        <a href="/pengunjung" data-route="/pengunjung" aria-label="pengunjung"
+            class="px-4 py-3 flex items-center space-x-4 rounded-lg hover:bg-gray-100">
+            <span class="-mr-1 font-medium">Pengunjung</span>
+        </a>
         <a href="/books" data-route="/books" aria-label="books"
             class="px-4 py-3 flex items-center space-x-4 rounded-lg hover:bg-gray-100">
             <span class="-mr-1 font-medium">Books</span>
-        </a>
-        <a href="/checkouts" data-route="/checkouts" aria-label="checkouts"
-            class="px-4 py-3 flex items-center space-x-4 rounded-lg hover:bg-gray-100">
-            <span class="-mr-1 font-medium">Checkouts</span>
         </a>
         <a href="/pustakawans" data-route="/pustakawans" aria-label="pustawakans"
             class="px-4 py-3 flex items-center space-x-4 rounded-lg hover:bg-gray-100">
             <span class="-mr-1 font-medium">Pustakawan</span>
         </a>
+        <?php } ?>
+        <a href="/checkouts" data-route="/checkouts" aria-label="checkouts"
+            class="px-4 py-3 flex items-center space-x-4 rounded-lg hover:bg-gray-100">
+            <span class="-mr-1 font-medium">Checkouts</span>
+        </a>
+        
     </div>
 </aside>
