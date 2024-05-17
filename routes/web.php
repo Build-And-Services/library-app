@@ -8,5 +8,7 @@ use core\Router;
 Router::get('/', 'AuthController', 'index');
 Router::post('/login', 'AuthController', 'login');
 Router::get('/logout', 'AuthController', 'logout');
+Router::get('/register', 'AuthController', 'registerView');
+Router::post('/register', 'AuthController', 'register');
 Router::get('/products', 'ProductController', 'index');
 Router::get('/dashboard', 'DashboardController', 'index');
