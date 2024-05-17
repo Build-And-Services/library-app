@@ -12,6 +12,7 @@ Router::get('/register-pustakawan', 'PustakawanController', 'registerForm');
 Router::get('/pustakawan/edit/{id}', 'PustakawanController', 'show');
 Router::post('/pustakawan-register', 'PustakawanController', 'store');
 Router::post('/pustakawan-delete/{id}', 'PustakawanController', 'destroy');
+Router::post('/pustakawan/update/{id}', 'PustakawanController', 'update');
 
 Router::get('/', 'AuthController', 'index');
 Router::post('/login', 'AuthController', 'login');
