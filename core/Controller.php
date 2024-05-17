@@ -14,4 +14,9 @@ class Controller
     {
         return isset($_SESSION['user']);
     }
+
+    public function checkRole($role)
+    {
+        return $_SESSION['user']['role'] === $role;
+    }
 }

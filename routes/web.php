@@ -14,3 +14,5 @@ Router::get('/products', 'ProductController', 'index');
 Router::get('/books', 'BookController', 'index');
 Router::get('/dashboard', 'DashboardController', 'index');
 Router::get('/pustakawans', 'PustakawanController', 'index');
+Router::get('/dashboard', 'DashboardController', 'index');
+Router::get('/checkouts', 'CheckoutController', 'index');
