@@ -12,3 +12,4 @@ Router::get('/register', 'AuthController', 'registerView');
 Router::post('/register', 'AuthController', 'register');
 Router::get('/products', 'ProductController', 'index');
 Router::get('/dashboard', 'DashboardController', 'index');
+Router::get('/pustakawans', 'PustakawanController', 'index');

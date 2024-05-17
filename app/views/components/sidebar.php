@@ -19,5 +19,9 @@
             class="px-4 py-3 flex items-center space-x-4 rounded-lg hover:bg-gray-100">
             <span class="-mr-1 font-medium">Products</span>
         </a>
+        <a href="/pustakawans" data-route="/pustakawans" aria-label="pustawakans"
+            class="px-4 py-3 flex items-center space-x-4 rounded-lg hover:bg-gray-100">
+            <span class="-mr-1 font-medium">Pustakawan</span>
+        </a>
     </div>
 </aside>

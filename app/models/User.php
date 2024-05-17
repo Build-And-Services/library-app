@@ -28,7 +28,7 @@ class User extends Model
 
     //     $sql = "INSERT INTO users (name, password, email, telepon, role) VALUES (:name, :password, :email, :telepon, :role)";
     //     $prepare = $this->pdo->prepare($sql);
-        
+
     //     $prepare->bindParam(':name', $name);
     //     $prepare->bindParam(':password', $hashed_password);
     //     $prepare->bindParam(':email', $email);
