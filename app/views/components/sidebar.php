@@ -15,6 +15,10 @@
             class="px-4 py-3 flex items-center space-x-4 rounded-lg hover:bg-gray-100">
             <span class="-mr-1 font-medium">Dashboard</span>
         </a>
+        <a href="/books" data-route="/books" aria-label="books"
+            class="px-4 py-3 flex items-center space-x-4 rounded-lg hover:bg-gray-100">
+            <span class="-mr-1 font-medium">Books</span>
+        </a>
         <a href="/products" data-route="/products" aria-label="products"
             class="px-4 py-3 flex items-center space-x-4 rounded-lg hover:bg-gray-100">
             <span class="-mr-1 font-medium">Products</span>
