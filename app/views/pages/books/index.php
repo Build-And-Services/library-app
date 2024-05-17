@@ -5,10 +5,32 @@ ob_start();
 
 <div class="container">
     <div class="bg-white px-5 py-4 rounded-md divide-y">
+        <?php if (!empty($_SESSION['error'])): ?>
+            <div role="alert">
+                <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
+                    Error
+                </div>
+                <div class="border border-t-0 border-red-400 rounded-b bg-red-100 px-4 py-3 text-red-700">
+                    <p><?php echo $_SESSION['error']; ?></p>
+                </div>
+            </div>
+            <?php unset($_SESSION['error']); ?>
+        <?php endif; ?>
+        <?php if (!empty($_SESSION['success'])): ?>
+            <div role="alert">
+                <div class="bg-green-500 text-white font-bold rounded-t px-4 py-2">
+                    Success
+                </div>
+                <div class="border border-t-0 border-green-400 rounded-b bg-green-100 px-4 py-3 text-green-700">
+                    <p><?php echo $_SESSION['success']; ?></p>
+                </div>
+            </div>
+            <?php unset($_SESSION['success']); ?>
+        <?php endif; ?>
         <!-- header -->
         <div class="flex justify-between items-center py-4">
             <h1 class="text-xl font-medium">List book</h1>
-            <a href="" class="px-4 py-2 bg-indigo-700 rounded inline-block text-white font-medium">Add new book</a>
+            <a href="/books/add" class="px-4 py-2 bg-indigo-700 rounded inline-block text-white font-medium">Add new book</a>
         </div>
 
         <!-- table -->
@@ -19,8 +41,11 @@ ob_start();
                         <th scope="col" class="px-6 py-3">
                             No.
                         </th>
-                      <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-3">
                             Title
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Thumbnail
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Description
@@ -31,8 +56,11 @@ ob_start();
                         <th scope="col" class="px-6 py-3">
                             Publisher
                         </th>
-                        <th>
+                        <th scope="col" class="px-6 py-3">
                             Status
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Action
                         </th>
                     </tr>
                 </thead>
@@ -49,6 +77,16 @@ ob_start();
                                 <?= $book->title; ?>
                             </td>
                             <td class="px-6 py-4">
+                                <?php
+                                    if(isset($book->thumbnail)){
+                                        ?>
+
+                                        <img src="<?= $book->thumbnail; ?>" alt="thumbnail">
+                                        <?php
+                                    }
+                                ?>
+                            </td>
+                            <td class="px-6 py-4">
                                 <p class="w-52 line-clamp-3">
                                     <?= $book->description; ?>
                                 </p>
@@ -62,10 +100,13 @@ ob_start();
 
                             </td>
                             <td class="px-6 py-4">
-                                <span class="px-4 text-xs py-2 bg-green-700 rounded-full text-white font-medium">
-                                <?= $book->status; ?>
-
+                                <span class="px-4 text-center text-xs py-2 bg-<?= $book->status == 'AVAILABLE' ? 'green' : 'yellow' ?>-700 rounded-full text-white font-medium">
+                                    <?= $book->status == 'AVAILABLE' ? 'AVAILABLE' : 'UNAVAILABLE'; ?>
                                 </span>
+                            </td>
+                            <td class="px-6 py-4 flex gap-2">
+                                <a href="/books/<?= $book->id; ?>" class="px-2 py-1 bg-yellow-600 rounded text-white font-medium">Edit</a>
+                                <a href="/books-delete/<?= $book->id; ?>" class="px-2 py-1 bg-red-600 rounded text-white font-medium">Delete</a>
                             </td>
                         </tr>
                     <?php
