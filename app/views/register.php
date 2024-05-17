@@ -28,6 +28,14 @@ ob_start();
                     required autofocus>
             </div>
             <div class="mb-6">
+                <label for="role" class="block mb-2 text-sm text-gray-600">Role</label>
+                <select id="role" name="role" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500" required>
+                    <option>Select Role</option>
+                    <option value="PENGUNJUNG">PENGUNJUNG</option>
+                    <option value="PUSTAKAWAN">PUSTAKAWAN</option>
+                </select>
+            </div>
+            <div class="mb-6">
                 <label for="email" class="block mb-2 text-sm text-gray-600">Email</label>
                 <input type="email" id="email" name="email"
                     class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
