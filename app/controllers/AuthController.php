@@ -53,14 +53,19 @@ class AuthController extends Controller
         $this->view('welcome');
     }
 
-    public function registerView() {
+    public function registerView()
+    {
         if ($this->isAuthenticated()) {
-            header('Location: /dashboard');
-            exit();
-        }
-        $this->view('register');    }
+            $this->view('register');
 
-    public function register() {
+            // header('Location: /dashboard');
+            // exit();
+        }
+        $this->view('register');
+    }
+
+    public function register()
+    {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $name = $_POST['name'];
             $password = $_POST['password'];
@@ -74,7 +79,7 @@ class AuthController extends Controller
                 $_SESSION['error'] = 'Attribute must be filled';
                 return $this->view('register', $_SESSION);
             }
-        
+
             $user = new User();
             $user->create([
                 'name' => $name,
@@ -90,6 +95,6 @@ class AuthController extends Controller
             $_SESSION['error'] = 'Register failed, Please try again';
             return $this->view('register', $_SESSION);
         }
-        
+
     }
 }
