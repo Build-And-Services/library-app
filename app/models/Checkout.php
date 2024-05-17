@@ -13,7 +13,7 @@ class Checkout extends Model
 
     public function __construct()
     {
-        parent::__construct(); // Panggil konstruktor kelas induk
+        parent::__construct();
     }
 
     public function getCheckouts()

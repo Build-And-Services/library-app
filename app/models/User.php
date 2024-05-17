@@ -10,8 +10,11 @@ use core\Model;
 class User extends Model
 {
     protected string $table = 'users';
-    private PDO $pdo;
 
+    public function __construct()
+    {
+        parent::__construct();
+    }
     public function getByEmail($email)
     {
         $result = $this->where(['email' => $email]);
