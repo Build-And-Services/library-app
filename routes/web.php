@@ -9,6 +9,7 @@ use core\Router;
 // Pustakawan
 Router::get('/pustakawans', 'PustakawanController', 'index');
 Router::get('/register-pustakawan', 'PustakawanController', 'registerForm');
+Router::get('/pustakawan/edit/{id}', 'PustakawanController', 'show');
 Router::post('/pustakawan-register', 'PustakawanController', 'store');
 Router::post('/pustakawan-delete/{id}', 'PustakawanController', 'destroy');
 
