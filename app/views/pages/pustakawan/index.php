@@ -78,11 +78,11 @@ ob_start();
                             </td>
                             <td class="px-6 py-4">
                                 <div class="grid grid-cols-2 gap-2">
-                                    <a href="/pustakawan/edit/<?php echo $item->id; ?>"><button type="button" class="focus:outline-black text-white text-sm py-1 px-3 border-b-4 border-yellow-600 bg-yellow-500 hover:bg-yellow-400">Update</button></a>
-                                    <!-- <form action="/pustakawan-delete/<?= $item->id; ?>" method="POST"> -->
                                     <input type="hidden" name="_method" value="DELETE" />
+                                    <a class="w-full" href="/pustakawan/edit/<?php echo $item->id; ?>">
+                                        <button type="button" class="w-full focus:outline-black text-white text-sm py-1 px-3 border-b-4 border-yellow-600 bg-yellow-500 hover:bg-yellow-400">Update</button>
+                                    </a>
                                     <button type="button" data-id="<?= $item->id ?>" class="button-delete h-full w-full focus:outline-black text-white text-sm py-1 px-3 border-b-4 border-red-600 bg-red-500 hover:bg-red-400">Delete</button>
-                                    <!-- </form> -->
                                 </div>
 
                             </td>

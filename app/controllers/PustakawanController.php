@@ -36,6 +36,34 @@ class PustakawanController extends Controller
 		$this->view('/pages/pustakawan/register');
 	}
 
+	public function update($data)
+	{
+		$name = $_POST['name'];
+		$email = $_POST['email'];
+		$telepon = $_POST['telepon'];
+
+		$pustakawan = new User();
+		$pustakawan = $pustakawan->find($data['id']);
+
+		if ($pustakawan) {
+			if (empty($name) || empty($email) || empty($telepon)) {
+				$_SESSION['error'] = 'Attribute must be filled';
+				return $this->view('pages/pustakawan/index', $_SESSION);
+			}
+			$pustakawan = new User();
+			$pustakawan->update([
+				'name' => $name,
+				'email' => $email,
+				'telepon' => $telepon,
+			], $data['id']);
+			$_SESSION['success'] = 'Success update data pustakawan';
+			header('Location: /pustakawans');
+			exit();
+		} else {
+			echo "pustakawan tidak ditemukan!";
+		}
+	}
+
 
 	public function store()
 	{
