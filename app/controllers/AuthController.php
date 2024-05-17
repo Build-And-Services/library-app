@@ -55,12 +55,12 @@ class AuthController extends Controller
 
     public function registerView()
     {
-        if ($this->isAuthenticated()) {
-            $this->view('register');
+        // if ($this->isAuthenticated()) {
+        //     $this->view('register');
 
-            // header('Location: /dashboard');
-            // exit();
-        }
+        //     // header('Location: /dashboard');
+        //     // exit();
+        // }
         $this->view('register');
     }
 

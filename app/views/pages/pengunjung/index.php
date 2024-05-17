@@ -30,7 +30,7 @@ ob_start();
         <!-- header -->
         <div class="flex justify-between items-center py-4">
             <h1 class="text-xl font-medium">Data Pengunjung</h1>
-            <a href="" class="px-4 py-2 bg-indigo-700 rounded inline-block text-white font-medium">Register Pengunjung</a>
+            <a href="/register" class="px-4 py-2 bg-indigo-700 rounded inline-block text-white font-medium">Register Pengunjung</a>
         </div>
 
         <!-- table -->
@@ -77,13 +77,12 @@ ob_start();
 
                             </td>
                             <td class="px-6 py-4">
-                                <div class="flex">
-                                    <a href="/pengunjung/edit/<?php echo $item->id; ?>">
-                                        <button class="text-white bg-yellow-700 hover:bg-yellow-800 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-yellow-600 dark:hover:bg-yellow-700 focus:outline-none dark:focus:ring-yellow-800">Edit</button>
+                                <div class="grid grid-cols-2 gap-2 text-center">
+                                    <a class="focus:outline-black text-white text-sm py-1 px-3 border-b-4 border-yellow-600 bg-yellow-500 hover:bg-yellow-400" href="/pengunjung/edit/<?php echo $item->id; ?>">
+                                        Update
                                     </a>
-                                    <a href="/pengunjung/delete/<?php echo $item->id; ?>">
-                                        <button class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800">Delete</button>
-                                    </a>
+                                    <button type="button" data-id="<?= $item->id ?>" class="button-delete-pengunjung h-full w-full focus:outline-black text-white text-sm py-1 px-3 border-b-4 border-red-600 bg-red-500 hover:bg-red-400">Delete</button>
+
                                 </div>
                             </td>
                         </tr>
