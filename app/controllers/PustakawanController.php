@@ -18,6 +18,19 @@ class PustakawanController extends Controller
 		]);
 	}
 
+	public function show($data)
+	{
+		$pustakawan = new User();
+		$pustakawan = $pustakawan->find($data['id']);
+		if ($pustakawan) {
+			$this->view('pages/pustakawan/edit', [
+				'pustakawan' => $pustakawan
+			]);
+		} else {
+			echo "pustakawan tidak ditemukan!";
+		}
+	}
+
 	public function registerForm()
 	{
 		$this->view('/pages/pustakawan/register');
