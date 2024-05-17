@@ -19,9 +19,9 @@
             class="px-4 py-3 flex items-center space-x-4 rounded-lg hover:bg-gray-100">
             <span class="-mr-1 font-medium">Books</span>
         </a>
-        <a href="/products" data-route="/products" aria-label="products"
+        <a href="/checkouts" data-route="/checkouts" aria-label="checkouts"
             class="px-4 py-3 flex items-center space-x-4 rounded-lg hover:bg-gray-100">
-            <span class="-mr-1 font-medium">Products</span>
+            <span class="-mr-1 font-medium">Checkouts</span>
         </a>
         <a href="/pustakawans" data-route="/pustakawans" aria-label="pustawakans"
             class="px-4 py-3 flex items-center space-x-4 rounded-lg hover:bg-gray-100">

@@ -7,7 +7,7 @@ use utils\DBConnection;
 
 class Model
 {
-    private PDO $pdo;
+    protected PDO $pdo;
     protected string $table;
 
     public function __construct()

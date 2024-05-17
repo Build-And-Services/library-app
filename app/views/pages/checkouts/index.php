@@ -1,9 +1,9 @@
 <?php
-$title = 'Products';
+$title = 'Checkouts';
 ob_start();
 ?>
 
-<h1>products</h1>
+<?php $data['checkouts'][0] ?>
 
 <?php
 $content = ob_get_clean();
