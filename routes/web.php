@@ -3,7 +3,14 @@
 namespace routes;
 
 require_once '../core/Autoloader.php';
+
 use core\Router;
+
+// Pustakawan
+Router::get('/pustakawans', 'PustakawanController', 'index');
+Router::get('/register-pustakawan', 'PustakawanController', 'registerForm');
+Router::post('/pustakawan-register', 'PustakawanController', 'store');
+Router::post('/pustakawan-delete/{id}', 'PustakawanController', 'destroy');
 
 Router::get('/', 'AuthController', 'index');
 Router::post('/login', 'AuthController', 'login');
@@ -13,7 +20,6 @@ Router::post('/register', 'AuthController', 'register');
 Router::get('/products', 'ProductController', 'index');
 Router::get('/books', 'BookController', 'index');
 Router::get('/dashboard', 'DashboardController', 'index');
-Router::get('/pustakawans', 'PustakawanController', 'index');
 Router::get('/dashboard', 'DashboardController', 'index');
 Router::get('/checkouts', 'CheckoutController', 'index');
 Router::get('/pengunjung', 'PengunjungController', 'index');
