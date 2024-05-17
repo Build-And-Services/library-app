@@ -29,12 +29,9 @@ Router::get('/dashboard', 'DashboardController', 'index');
 
 // CHECKOUTS
 Router::get('/checkouts', 'CheckoutController', 'index');
-<<<<<<< HEAD
 Router::get('/pengunjung', 'PengunjungController', 'index');
 Router::get('/pengunjung/edit/{id}', 'PengunjungController', 'show');
 Router::post('/pengunjung/update/{id}', 'PengunjungController', 'update');
 Router::get('/pengunjung/delete/{id}', 'PengunjungController', 'delete');
-=======
 Router::get('/checkouts/create', 'CheckoutController', 'create');
 Router::post('/checkouts/store', 'CheckoutController', 'store');
->>>>>>> 6ee984e (feat: add data peminjam)
