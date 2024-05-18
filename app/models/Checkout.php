@@ -20,7 +20,8 @@ class Checkout extends Model
                 u.name as member, 
                 pu.name as pustakawan, 
                 c.taken_date, 
-                cd.return_date
+                cd.return_date,
+                cd.id as detail_id
             FROM
                 checkout_details cd
             JOIN

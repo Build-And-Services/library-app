@@ -41,25 +41,49 @@ class CheckoutController extends Controller
     }
     public function store()
     {
-        $userId = $_POST['user'];
-        $bookId = $_POST['book'];
-        var_dump($bookId);
-        die();
+        try {
+            $userId = $_POST['user'];
+            $bookId = $_POST['book'];
+    
+            $checkout = new Checkout;
+            $checkoutId = $checkout->insertGetId([
+                'user_id' => $userId,
+                'pustakawan_id' => $_SESSION['user']['id'],
+                'taken_date' => date('Y-m-d'),
+            ]);
+    
+            for ($i=0; $i < count($bookId); $i++) { 
+                $checkoutDetails = new CheckoutDetail;
+                $checkoutDetails->create([
+                    'checkout_id' => $checkoutId,
+                    'book_id' => $bookId[$i]
+                ]);
+            }
+    
+            $_SESSION['success'] = 'Success added checkout.';
+            header('Location: /checkouts');
+            exit();
+        } catch (\Throwable $th) {
+            $_SESSION['error'] = $th->getMessage();
+            header('Location: /checkouts');      
+            exit();
+        }
+    }
 
-        $checkout = new Checkout;
-        $checkoutId = $checkout->insertGetId([
-            'user_id' => $userId,
-            'pustakawan_id' => $_SESSION['user']['id'],
-            'taken_date' => date('Y-m-d'),
-        ]);
-
-        $checkoutDetails = new CheckoutDetail;
-        $checkoutDetails->create([
-            'checkout_id' => $checkoutId,
-            'book_id' => $bookId
-        ]);
-
-        header('Location: /checkouts');
-        exit();
+    public function return($data){
+        try {
+            $checkoutDetails = new CheckoutDetail();
+            $checkoutDetails->update([
+                'return_date' => date('Y-m-d H:i:s')
+            ], $data['id']);
+    
+            $_SESSION['success'] = 'Success returned book.';
+            header('Location: /checkouts');
+            exit();
+        } catch (\Throwable $th) {
+            $_SESSION['error'] = $th->getMessage();
+            header('Location: /checkouts');      
+            exit();
+        }
     }
 }
