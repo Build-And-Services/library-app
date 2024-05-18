@@ -6,6 +6,7 @@ ob_start();
 <div class="container bg-white p-8">
     <h2 class="font-bold text-center text-xl">Add New Checkout</h2>
     <form action="/checkouts/store" method="POST">
+
         <div class="mb-6">
             <label for="user" class="block mb-2 text-sm text-gray-600">Member name</label>
             <select id="user" name="user"
@@ -16,11 +17,12 @@ ob_start();
                 <?php endforeach; ?>
             </select>
         </div>
+        
         <div class="mb-6" id="book_container">
-            <div class="book-container w-full flex gap-2 items-end mb-2">
+            <div class="book-container w-full flex gap-2 items-end mb-5">
                 <div class="w-full item-container">
                     <label for="book" class="block mb-2 text-sm text-gray-600">Book title</label>
-                    <select id="book" name="book[]"
+                    <select name="book[]"
                         class="book-item w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500"
                         required>
                         <option>Choose book</option>
@@ -63,11 +65,15 @@ ob_start();
 <script>
     $(document).ready(function () {
         $('#user').select2();
-        $('#book').select2();
+        $(document).on('click', '.add-item', function() {
+            $('.book-container').last().clone().appendTo('#book_container');
+
+        });
+
     });
 </script>
 
-<script>
+<!-- <script>
     $(document).ready(function () {
         const $bookContainer = $('.book-container');
         const $itemContainer = $('.item-container');
@@ -82,7 +88,7 @@ ob_start();
 
         $addItemBtn.on('click', addGejala)
     });
-</script>
+</script> -->
 
 
 
