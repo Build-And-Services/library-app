@@ -8,8 +8,7 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/css/style.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
@@ -63,12 +62,51 @@
             }
         }
 
-        function pagination() {
+        function search(data, content = document.getElementById('content-pagination')) {
+            let search = document.getElementById('search');
+            search.addEventListener('input', (e) => {
+                let tbody = document.createElement('tbody');
+                let table = document.querySelector('#content-pagination table');
+                if (e.target.value === '') {
+                    console.log('masuk sini')
+                    console.log(data)
+                    for (let index = 0; index < data.length; index++) {
+                        tbody.appendChild(data[index]);
+                    }
+                }
+
+                // let result = []
+                // for (let i = 0; i < data.length; i++) {
+                //     if (data[i].children[1].textContent.toLowerCase().includes(e.target.value.toLowerCase())) {
+                //         console.log(data[i].children[1].textContent.toLowerCase().includes(e.target.value.toLowerCase()))
+                //         result.push(data[i])
+                //     }
+                // }
+
+                // for (let index = 0; index < result.length; index++) {
+                //     tbody.appendChild(result[index]);
+                // }
+
+
+
+                console.log(table)
+
+                // if (table.getElementsByTagName('tbody').length > 0) {
+                //     table.replaceChild(tbody, table.getElementsByTagName('tbody')[0]);
+                // } else {
+                //     table.appendChild(tbody);
+                // }
+            })
+        }
+
+        function dataTable() {
             var dataPerPage = 10;
 
             var tablePagination = document.querySelector('#table-pagination tbody');
             var contentPagination = document.getElementById('content-pagination');
             var data = tablePagination.children;
+            console.log(data)
+            search(data);
 
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
@@ -84,8 +122,8 @@
                 generatePage(activePage, dataPerPage, data);
             }
         }
-        document.addEventListener('DOMContentLoaded', function () {
-            pagination()
+        document.addEventListener('DOMContentLoaded', function() {
+            dataTable()
         });
     </script>
 

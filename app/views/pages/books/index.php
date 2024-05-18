@@ -5,7 +5,7 @@ ob_start();
 
 <div class="container">
     <div class="bg-white px-5 py-4 rounded-md divide-y">
-        <?php if (!empty($_SESSION['error'])): ?>
+        <?php if (!empty($_SESSION['error'])) : ?>
             <div role="alert">
                 <div class="bg-red-500 text-white font-bold rounded-t px-4 py-2">
                     Error
@@ -16,7 +16,7 @@ ob_start();
             </div>
             <?php unset($_SESSION['error']); ?>
         <?php endif; ?>
-        <?php if (!empty($_SESSION['success'])): ?>
+        <?php if (!empty($_SESSION['success'])) : ?>
             <div role="alert">
                 <div class="bg-green-500 text-white font-bold rounded-t px-4 py-2">
                     Success
@@ -30,6 +30,7 @@ ob_start();
         <!-- header -->
         <div class="flex justify-between items-center py-4">
             <h1 class="text-xl font-medium">List book</h1>
+            <input type="search" name="search" id="search" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[60%] p-2.5" />
             <a href="/books/add" class="px-4 py-2 bg-indigo-700 rounded inline-block text-white font-medium">Add new book</a>
         </div>
 
@@ -67,23 +68,23 @@ ob_start();
                 <tbody>
 
                     <?php
-                        foreach($books as $key => $book) {
+                    foreach ($books as $key => $book) {
                     ?>
                         <tr class="bg-white border-b">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                <?= $key+1; ?>
+                                <?= $key + 1; ?>
                             </th>
                             <td class="px-6 py-4">
                                 <?= $book->title; ?>
                             </td>
                             <td class="px-6 py-4">
                                 <?php
-                                    if(isset($book->thumbnail)){
-                                        ?>
+                                if (isset($book->thumbnail)) {
+                                ?>
 
-                                        <img src="<?= $book->thumbnail; ?>" alt="thumbnail">
-                                        <?php
-                                    }
+                                    <img src="<?= $book->thumbnail; ?>" alt="thumbnail">
+                                <?php
+                                }
                                 ?>
                             </td>
                             <td class="px-6 py-4">
@@ -92,11 +93,11 @@ ob_start();
                                 </p>
                             </td>
                             <td class="px-6 py-4">
-                            <?= $book->author; ?>
+                                <?= $book->author; ?>
 
                             </td>
                             <td class="px-6 py-4">
-                            <?= $book->publisher; ?>
+                                <?= $book->publisher; ?>
 
                             </td>
                             <td class="px-6 py-4">
@@ -110,12 +111,12 @@ ob_start();
                             </td>
                         </tr>
                     <?php
-                        }
+                    }
                     ?>
                 </tbody>
             </table>
 
-            
+
         </div>
     </div>
 </div>
