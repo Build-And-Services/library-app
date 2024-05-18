@@ -31,11 +31,12 @@ class BookController extends Controller
         $this->view('pages/books/add');
     }
 
-    public function edit($data){
+    public function edit($data)
+    {
         try {
             $book = new Book();
             $book = $book->find($data['id']);
-            if(!$book){
+            if (!$book) {
                 throw new \Exception("Book is not found");
             }
             $this->view('pages/books/edit', [
@@ -43,7 +44,7 @@ class BookController extends Controller
             ]);
         } catch (\Throwable $th) {
             $_SESSION['error'] = $th->getMessage();
-            header('Location: /books');        
+            header('Location: /books');
         }
     }
 
@@ -52,28 +53,28 @@ class BookController extends Controller
         try {
             $book = new Book();
             $book = $book->find($data['id']);
-            if(!$book->id){
+            if (!$book->id) {
                 throw new \Exception("Book is not found");
             }
             $book = new Book();
             $book->delete($data['id']);
             $_SESSION['success'] = 'Success deleted book.';
-            header('Location: /books');        
+            header('Location: /books');
         } catch (\Throwable $th) {
             $_SESSION['error'] = $th->getMessage();
-            header('Location: /books');        
+            header('Location: /books');
         }
     }
 
     public function store()
     {
         $request = $_POST;
-        if($_FILES['thumbnail']){
+        if ($_FILES['thumbnail']) {
             $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/images/books/"; // Direktori tujuan penyimpanan
             $targetFile = $targetDir . basename($_FILES["thumbnail"]["name"]);
             $upload = move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $targetFile);
             if ($upload) {
-                $request["thumbnail"] = "/images/books/".basename($_FILES["thumbnail"]["name"]);
+                $request["thumbnail"] = "/images/books/" . basename($_FILES["thumbnail"]["name"]);
             }
         }
 
@@ -86,12 +87,12 @@ class BookController extends Controller
     public function update()
     {
         $request = $_POST;
-        if($_FILES['thumbnail']){
+        if ($_FILES['thumbnail']) {
             $targetDir = $_SERVER['DOCUMENT_ROOT'] . "/images/books/"; // Direktori tujuan penyimpanan
             $targetFile = $targetDir . basename($_FILES["thumbnail"]["name"]);
             $upload = move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $targetFile);
             if ($upload) {
-                $request["thumbnail"] = "/images/books/".basename($_FILES["thumbnail"]["name"]);
+                $request["thumbnail"] = "/images/books/" . basename($_FILES["thumbnail"]["name"]);
             }
         }
         $id = $request['id'];
@@ -100,5 +101,14 @@ class BookController extends Controller
         $user->update($request, $id);
         $_SESSION['success'] = 'Success update book.';
         header('Location: /books');
+    }
+
+    public function availableBooks()
+    {
+        $books = new Book;
+        $books = $books->where(['status' => 'AVAILABLE']);
+        $this->view('pages/books/available', [
+            'books' => $books
+        ]);
     }
 }

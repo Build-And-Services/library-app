@@ -37,3 +37,7 @@ Router::post('/pengunjung/update/{id}', 'PengunjungController', 'update');
 Router::get('/pengunjung/delete/{id}', 'PengunjungController', 'delete');
 Router::get('/checkouts/create', 'CheckoutController', 'create');
 Router::post('/checkouts/store', 'CheckoutController', 'store');
+
+// PENGUNJUNG
+Router::get('/pengunjung/history', 'HistoryController', 'index');
+Router::get('/books/available', 'BookController', 'availableBooks');

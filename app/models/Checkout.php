@@ -39,4 +39,34 @@ class Checkout extends Model
         $result = $prepare->fetchAll(PDO::FETCH_OBJ);
         return $result;
     }
+
+    public function getCheckoutsByUserId()
+    {
+        $userId = $_SESSION['user']['id'];
+
+        $sql = "
+            SELECT 
+                c.id,
+                b.title as book_title,
+                b.thumbnail,
+                c.taken_date, 
+                cd.return_date
+            FROM
+                checkout_details cd
+            JOIN
+                checkouts c ON cd.checkout_id = c.id
+            JOIN
+                users u ON c.user_id = u.id
+            JOIN
+                books b ON cd.book_id = b.id
+            WHERE
+                c.user_id = :userId
+        ";
+
+        $prepare = $this->pdo->prepare($sql);
+        $prepare->bindParam(':userId', $userId, PDO::PARAM_INT);
+        $prepare->execute();
+        $result = $prepare->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
 }
