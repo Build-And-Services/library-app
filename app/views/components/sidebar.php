@@ -31,10 +31,13 @@
                 <span class="-mr-1 font-medium">Pustakawan</span>
             </a>
         <?php } ?>
-        <a href="/checkouts" data-route="/checkouts" aria-label="checkouts"
-            class="px-4 py-3 flex items-center space-x-4 rounded-lg hover:bg-gray-100">
-            <span class="-mr-1 font-medium">Checkouts</span>
-        </a>
+        <?php 
+        if ($_SESSION['user']['role'] === 'PUSTAKAWAN') {?>
+            <a href="/checkouts" data-route="/checkouts" aria-label="checkouts"
+                class="px-4 py-3 flex items-center space-x-4 rounded-lg hover:bg-gray-100">
+                <span class="-mr-1 font-medium">Checkouts</span>
+            </a>
+        <?php } ?>
         <?php
         if ($_SESSION['user']['role'] === 'PENGUNJUNG') {
             ?>
