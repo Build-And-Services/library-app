@@ -30,7 +30,6 @@ ob_start();
         <!-- header -->
         <div class="flex justify-between items-center py-4">
             <h1 class="text-xl font-medium">List book</h1>
-            <input type="search" name="search" id="search" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[60%] p-2.5" />
             <a href="/books/add" class="px-4 py-2 bg-indigo-700 rounded inline-block text-white font-medium">Add new book</a>
         </div>
 
@@ -115,8 +114,6 @@ ob_start();
                     ?>
                 </tbody>
             </table>
-
-
         </div>
     </div>
 </div>
